@@ -1,0 +1,33 @@
+﻿@model List<Thyme1.Models.PlantRoom>
+
+@using Thyme1.Models
+
+<h1>Plant Rooms</h1>
+
+@if (Model.Count == 0)
+{
+    <p>No Plant Rooms yet!</p>
+} else {
+
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>
+            Plant Room Name
+        </th>
+    </tr>
+    @foreach (PlantRoom room in Model)
+    {
+
+       
+        <tr>
+            <td>@room.Id</td>
+            <td>@room.Name</td>
+        </tr>
+    }
+</table>
+}
+
+
+

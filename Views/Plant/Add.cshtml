@@ -1,0 +1,36 @@
+﻿@using Thyme1.ViewModels;
+
+@model AddPlantViewModel;
+
+<h1>Add Event</h1>
+
+<form method="post">
+    <div asp-controller="Plants" asp-action="Add" class="form-group">
+        <label asp-for="PlantName">Name</label>
+        <input asp-for="PlantName" />
+        <span asp-validation-for="PlantName"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="PlantGenus">Genus</label>
+        <input asp-for="PlantGenus" />
+        <span asp-validation-for="PlantGenus"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="LastWatered">Last Watered</label>
+        <input asp-for="LastWatered" />
+        <span asp-validation-for="LastWatered"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastFertilized">Last Fertilized</label>
+        <input asp-for="LastFertilized" />
+        <span asp-validation-for="LastFertilized"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PlantRoomId">Plant Room</label>
+        <select asp-for="PlantRoomId" asp-items="Model.PlantRooms"></select>
+    </div>
+    <input type="submit" value="Add Plant" />
+</form>
+

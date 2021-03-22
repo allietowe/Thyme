@@ -1,0 +1,24 @@
+﻿@model Thyme.ViewModels.PlantDetailViewModel
+
+<h1>@Model.PlantName</h1>
+
+<table class="table">
+    <tr>
+        <th>Plant Genus</th>
+        <td>@Model.PlantGenus</td>
+    </tr>
+    <tr>
+        <th>Last Watered</th>
+        <td>@Model.LastWatered</td>
+    </tr>
+    <tr>
+        <th>Last Fertilized</th>
+        <td>@Model.LastFertilized</td>
+    </tr>
+    <tr>
+        <th>Plant Room</th>
+        <td>@Model.PlantRoomName</td>
+    </tr>
+</table>
+
+<a asp-controller="Tag" asp-action="Add Event" asp-route-id="@Model.PlantId"></a>
