@@ -28,7 +28,7 @@ namespace Thyme1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PlantDbContext>(options =>
-                options.UseSqlServer(
+                options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<PlantDbContext>();
