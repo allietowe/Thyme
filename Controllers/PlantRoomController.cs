@@ -22,7 +22,7 @@ namespace Thyme1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<PlantRoom> plantRooms = context.PlantRooms.ToList();
+            List<PlantRooms> plantRooms = context.PlantRooms.ToList();
             return View(plantRooms);
         }
 
@@ -38,7 +38,7 @@ namespace Thyme1.Controllers
         {
             if (ModelState.IsValid)
             {
-                PlantRoom newPlantRoom = new PlantRoom
+                PlantRooms newPlantRoom = new PlantRooms
                 {
                     Name = addPlantRoomViewModel.Name
                 };

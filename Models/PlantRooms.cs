@@ -6,19 +6,19 @@ using Thyme1.Models;
 
 namespace Thyme1.Models
 {
-    public class PlantRoom
+    public class PlantRooms
     {
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public List<Plant> plants { get; set; }
+        public List<Plant> Plants { get; set; }
 
-        public PlantRoom()
+        public PlantRooms()
         {
         }
 
-        public PlantRoom(string name)
+        public PlantRooms(string name)
         {
             Name = name;
         }

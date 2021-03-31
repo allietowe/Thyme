@@ -32,8 +32,8 @@ namespace Plants.Controllers
 
         public IActionResult Add()
         {
-            List<PlantRoom> rooms = context.PlantRooms.ToList();
-            AddPlantViewModel addPlantViewModel = new AddPlantViewModel();
+            List<PlantRooms> rooms = context.PlantRooms.ToList();
+            AddPlantViewModel addPlantViewModel = new AddPlantViewModel(rooms);
             return View(addPlantViewModel);
         }
 
@@ -42,7 +42,7 @@ namespace Plants.Controllers
         {
             if (ModelState.IsValid)
             {
-                PlantRoom thePlantRoom = context.PlantRooms.Find(addPlantViewModel.PlantRoomId);
+                PlantRooms thePlantRoom = context.PlantRooms.Find(addPlantViewModel.PlantRoomId);
                 Plant newPlant = new Plant
                 {
                     PlantName = addPlantViewModel.PlantName,

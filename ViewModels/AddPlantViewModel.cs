@@ -11,24 +11,16 @@ namespace Thyme1.ViewModels
     public class AddPlantViewModel
     {
         [Required(ErrorMessage = "Name is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters long")]
         public string PlantName { get; set; }
-
-        [Required(ErrorMessage = "Please enter description for event")]
-        [StringLength(500, ErrorMessage = "Description is too long!")]
         public string PlantGenus { get; set; }
-
-        [EmailAddress(ErrorMessage = "Please enter valid email address.")]
         public DateTime LastWatered { get; set; }
-
-        [Required(ErrorMessage = "Location is required")]
         public DateTime LastFertilized { get; set; }
         public int PlantRoomId { get; set; }
         public List<SelectListItem> PlantRooms { get; set; }
 
-        public AddPlantViewModel(List<PlantRoom> plantRooms)
+        public AddPlantViewModel(List<PlantRooms> plantRooms)
         {
-            PlantRooms = new List<SelectListItem>(PlantRooms);
+            PlantRooms = new List<SelectListItem>();
 
             foreach (var room in plantRooms)
             {
