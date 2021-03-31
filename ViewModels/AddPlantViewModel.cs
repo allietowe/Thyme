@@ -23,9 +23,7 @@ namespace Thyme1.ViewModels
 
         [Required(ErrorMessage = "Location is required")]
         public DateTime LastFertilized { get; set; }
-
         public int PlantRoomId { get; set; }
-
         public List<SelectListItem> PlantRooms { get; set; }
 
         public AddPlantViewModel(List<PlantRoom> plantRooms)

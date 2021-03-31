@@ -22,8 +22,8 @@ namespace Thyme1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<PlantRoom> categories = context.PlantRooms.ToList();
-            return View(categories);
+            List<PlantRoom> plantRooms = context.PlantRooms.ToList();
+            return View(plantRooms);
         }
 
         [HttpGet]

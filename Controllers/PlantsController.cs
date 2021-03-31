@@ -27,13 +27,13 @@ namespace Plants.Controllers
             List<Plant> plants = context.Plants
                 .Include(e => e.PlantRoom)
                 .ToList();
-            return View();
+            return View(plants);
         }
 
         public IActionResult Add()
         {
             List<PlantRoom> rooms = context.PlantRooms.ToList();
-            AddPlantViewModel addPlantViewModel = new AddPlantViewModel(rooms);
+            AddPlantViewModel addPlantViewModel = new AddPlantViewModel();
             return View(addPlantViewModel);
         }
 

@@ -1,0 +1,62 @@
+﻿@model List<Thyme1.Models.Plant>
+
+
+<h1>Plants</h1>
+
+
+@if (Model.Count == 0)
+{
+    <p>No Plants Here!</p>
+}
+else
+{
+    <table class="table">
+
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Plant Genus
+            </th>
+            <th>
+                Last Watered
+            </th>
+            <th>
+                Last Fertilized
+            </th>
+            <th>
+                Room
+            </th>
+            <th>
+                Edit Plant
+            </th>
+        </tr>
+        @foreach (var plant in Model)
+        {
+            <tr>
+                <td>@plant.Id</td>
+                <td><a asp-controller="Plants" asp-action="Detail" asp-route-id="@plant.Id">@plant.PlantName</a></td>
+                <td>@plant.PlantGenus</td>
+                <td>@plant.LastWatered</td>
+                <td>@plant.LastFertilized</td>
+                <td>@plant.PlantRoom.Name</td>
+                <td><a asp-controller="Plants" asp-action="Edit" asp-route-id="@plant.Id">Edit Plant</a></td>
+            </tr>
+        }
+    </table>
+}
+
+
+<p>
+    <a asp-controller="Plants" asp-action="Add">Add Plant</a>
+</p>
+<p>
+    <a asp-controller="Plants" asp-action="Delete">Delete Plant</a>
+</p>
+
+
+@*<partial name="/Views/Shared/_LinkListPartial.cshtml" />*@
