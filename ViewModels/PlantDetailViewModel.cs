@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Thyme1.ViewModels
         public string PlantGenus { get; set; }
         public DateTime LastWatered { get; set; }
         public DateTime LastFertilized { get; set; }
+        public IFormFile ProfileImage { get; set; }
         public string PlantRoomName { get; set; }
 
 

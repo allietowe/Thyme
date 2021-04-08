@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,7 @@ namespace Thyme1.ViewModels
         public string PlantGenus { get; set; }
         public DateTime LastWatered { get; set; }
         public DateTime LastFertilized { get; set; }
+        public IFormFile ProgressPhoto { get; set; }
         public int PlantRoomId { get; set; }
         public List<SelectListItem> PlantRooms { get; set; }
 

@@ -31,6 +31,15 @@
         <label asp-for="PlantRoomId">Plant Room</label>
         <select asp-for="PlantRoomId" asp-items="Model.PlantRooms"></select>
     </div>
-    <input type="submit" value="Add Plant" />
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="ProgressPhoto" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="ProgressPhoto" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="ProgressPhoto" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Add Plant" />
 </form>
 

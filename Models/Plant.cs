@@ -11,7 +11,7 @@ namespace Thyme1.Models
         public string PlantGenus { get; set; }
         public DateTime LastWatered { get; set; }
         public DateTime LastFertilized { get; set; }
-        // public ProgressPhoto ProgressPhoto { get; set; }
+        public string ProgressPhoto { get; set; }
         public PlantRooms PlantRoom { get; set; }
         public int PlantRoomId { get; set; }
         public int Id { get; set; }

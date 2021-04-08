@@ -172,3 +172,5 @@ C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Pl
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Plants\Detail.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Plants\Edit.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Plants\Index.cshtml.g.cs
+C:\Users\towea\source\repos\Thyme1\Thyme1\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\towea\source\repos\Thyme1\Thyme1\bin\Debug\netcoreapp3.1\package-lock.json

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Thyme1.Models;
 using Thyme1.ViewModels;
 using Thyme1.Data;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Plants.Controllers
 {
@@ -16,10 +18,12 @@ namespace Plants.Controllers
     {
 
         private PlantDbContext context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public PlantsController(PlantDbContext dbContext)
+        public PlantsController(PlantDbContext dbContext, IWebHostEnvironment hostEnvironment)
         {
             context = dbContext;
+            webHostEnvironment = hostEnvironment;
         }
         [AllowAnonymous]
         public IActionResult Index()
@@ -42,6 +46,7 @@ namespace Plants.Controllers
         {
             if (ModelState.IsValid)
             {
+                string uniqueFileName = UploadedFile(addPlantViewModel);
                 PlantRooms thePlantRoom = context.PlantRooms.Find(addPlantViewModel.PlantRoomId);
                 Plant newPlant = new Plant
                 {
@@ -49,6 +54,7 @@ namespace Plants.Controllers
                     PlantGenus = addPlantViewModel.PlantGenus,
                     LastWatered = addPlantViewModel.LastWatered,
                     LastFertilized = addPlantViewModel.LastFertilized,
+                    ProgressPhoto = uniqueFileName,
                     PlantRoom = thePlantRoom
                 };
 
@@ -59,6 +65,23 @@ namespace Plants.Controllers
             }
 
             return View(addPlantViewModel);
+        }
+
+        private string UploadedFile(AddPlantViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ProgressPhoto != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProgressPhoto.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProgressPhoto.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
 
         public IActionResult Delete()
