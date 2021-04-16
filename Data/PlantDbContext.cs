@@ -11,6 +11,7 @@ namespace Thyme1.Data
     {
         public DbSet<Plant> Plants { get; set; }
         public DbSet<PlantRooms> PlantRooms { get; set; }
+        public DbSet<ProgressPhotos> ProgressPhotos { get; set; }
 
         public PlantDbContext(DbContextOptions<PlantDbContext> options) : base(options)
         {

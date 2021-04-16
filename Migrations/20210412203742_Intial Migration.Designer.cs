@@ -9,8 +9,8 @@ using Thyme1.Data;
 namespace Thyme1.Migrations
 {
     [DbContext(typeof(PlantDbContext))]
-    [Migration("20210322214136_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210412203742_Intial Migration")]
+    partial class IntialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,7 +233,7 @@ namespace Thyme1.Migrations
                     b.Property<string>("PlantName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("PlantRoomId")
+                    b.Property<int>("PlantRoomId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -243,7 +243,7 @@ namespace Thyme1.Migrations
                     b.ToTable("Plants");
                 });
 
-            modelBuilder.Entity("Thyme1.Models.PlantRoom", b =>
+            modelBuilder.Entity("Thyme1.Models.PlantRooms", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -255,6 +255,23 @@ namespace Thyme1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlantRooms");
+                });
+
+            modelBuilder.Entity("Thyme1.Models.ProgressPhotos", b =>
+                {
+                    b.Property<int>("ProgressPhotoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("PhotoName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ProgressPhotoID");
+
+                    b.ToTable("ProgressPhotos");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -310,9 +327,11 @@ namespace Thyme1.Migrations
 
             modelBuilder.Entity("Thyme1.Models.Plant", b =>
                 {
-                    b.HasOne("Thyme1.Models.PlantRoom", "PlantRoom")
-                        .WithMany("plants")
-                        .HasForeignKey("PlantRoomId");
+                    b.HasOne("Thyme1.Models.PlantRooms", "PlantRoom")
+                        .WithMany("Plants")
+                        .HasForeignKey("PlantRoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

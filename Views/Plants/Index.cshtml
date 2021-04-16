@@ -39,10 +39,6 @@ else
         {
     <tr>
         <td>@plant.Id</td>
-        <img src="~/images/@plant.ProgressPhoto"
-             class="rounded-circle"
-             height="40" width="40"
-             asp-append-version="true" />
         <td><a asp-controller="Plants" asp-action="Detail" asp-route-id="@plant.Id">@plant.PlantName</a></td>
         <td>@plant.PlantGenus</td>
         <td>@plant.LastWatered</td>

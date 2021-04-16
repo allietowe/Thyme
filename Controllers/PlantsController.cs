@@ -46,7 +46,7 @@ namespace Plants.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = UploadedFile(addPlantViewModel);
+                
                 PlantRooms thePlantRoom = context.PlantRooms.Find(addPlantViewModel.PlantRoomId);
                 Plant newPlant = new Plant
                 {
@@ -54,7 +54,6 @@ namespace Plants.Controllers
                     PlantGenus = addPlantViewModel.PlantGenus,
                     LastWatered = addPlantViewModel.LastWatered,
                     LastFertilized = addPlantViewModel.LastFertilized,
-                    ProgressPhoto = uniqueFileName,
                     PlantRoom = thePlantRoom
                 };
 

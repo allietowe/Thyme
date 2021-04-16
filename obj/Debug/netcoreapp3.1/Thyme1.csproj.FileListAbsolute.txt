@@ -15,8 +15,6 @@ C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Thyme1.RazorCo
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\PlantRoom\Create.cshtml.g.cs
-C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\PlantRoom\Index.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -174,3 +172,7 @@ C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Pl
 C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\Plants\Index.cshtml.g.cs
 C:\Users\towea\source\repos\Thyme1\Thyme1\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\towea\source\repos\Thyme1\Thyme1\bin\Debug\netcoreapp3.1\package-lock.json
+C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\PlantRoom\Create.cshtml.g.cs
+C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\PlantRoom\Index.cshtml.g.cs
+C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\ProgressPhoto\Create.cshtml.g.cs
+C:\Users\towea\source\repos\Thyme1\Thyme1\obj\Debug\netcoreapp3.1\Razor\Views\ProgressPhoto\Index.cshtml.g.cs
