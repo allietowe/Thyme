@@ -14,17 +14,25 @@ using System.Threading.Tasks;
 using Thyme1.Data;
 using Hangfire;
 using Hangfire.SqlServer;
+using Thyme1.Controllers;
+using static Thyme1.Controllers.RemindersController;
 
 namespace Thyme1
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+                 var builder = new ConfigurationBuilder()
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment hostingEnvironment { get;  }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -49,10 +57,18 @@ namespace Thyme1
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddHangfireServer();
+            services.AddMvc();
+
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+
+            // Add our Config object so it can be injected
+            services.Configure<Email>(Configuration.GetSection("EmailPassword"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, IWebHostEnvironment env, IConfiguration conf)
         {
             if (env.IsDevelopment())
             {
@@ -71,7 +87,10 @@ namespace Thyme1
             app.UseRouting();
 
             app.UseHangfireDashboard();
-            backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+
+            RemindersController obj = new RemindersController(env);
+            
+            RecurringJob.AddOrUpdate(() => obj.SendEmail(), Cron.Minutely);
 
             app.UseAuthentication();
             app.UseAuthorization();
