@@ -1,0 +1,74 @@
+﻿@model List<Thyme1.Models.Reminder>
+
+
+<style>
+    .header {
+        color: white;
+    }
+    table tr td, table tr th {
+        background-color: rgba(0, 15, 8, 0.3) !important;
+        color: white;
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+        justify-content: space-around;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    .table {
+        margin: auto;
+        width: 50% !important;
+    }
+
+    .text-my-own-color {
+        color: white !important;
+    }
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+@if (Model.Count == 0)
+{
+    <p class="header">No Reminders Here!</p>
+}
+else
+{
+
+    <div id="box" class="row justify-content-center">
+        <div class="col-auto">
+            <h1>My Reminders</h1>
+            <table class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Email Address</th>
+                        <th>Message</th>
+                        <th>Reminder Time</th>
+                        <th>Plant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reminder in Model)
+                    {
+                        <tr>
+                            <td style="width:10%"><a class="text-my-own-color" asp-controller="Reminders" asp-action="Index" asp-route-id="@reminder.Id">@reminder.Email</a></td>
+                            <td>@reminder.Message</td>
+                            <td>@reminder.Time</td>
+                            <td>@reminder.Plant.PlantName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+
+<p>
+    <a class="text-my-own-color" asp-controller="Reminders" asp-action="Create">Create New Reminder</a>
+</p>
+<p>
+    <a class="text-my-own-color" asp-controller="Reminders" asp-action="Delete">Delete Reminder</a>
+</p>

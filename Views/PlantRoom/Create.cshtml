@@ -1,15 +1,59 @@
-﻿@model Thyme1.ViewModels.AddPlantRoomViewModel
+﻿@using Thyme1.ViewModels;
+@model AddPlantRoomViewModel;
 
-<h1>Add Plant Room</h1>
+<style>
+    #cover {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
 
+    #cover-caption {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
 
-    <form asp-controller="PlantRoom" asp-action="ProcessCreatePlantRoomForm" method="post">
-        <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+    /* only used for background overlay not needed for centering */
+    form:before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.3);
+        z-index: -1;
+        border-radius: 10px;
+    }
+    .btn, .btn-lg {
+        background-color: #A4B494 !important;
+    }
+
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Add A Room</h1>
+                    <h5>Organize your collection into rooms so you never lose track!</h5>
+                    <div class="px-2">
+                        <form method="post" asp-controller="PlantRoom" asp-action="Create">
+                            <div class="justify-content-center form-group">
+                                <input asp-for="Name" type="text" class="form-control" placeholder="Name of Room">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-lg">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
- 
-    <input type="submit" value="Create Plant Room" />
-</form>
+</section>

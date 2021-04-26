@@ -1,38 +1,86 @@
-﻿@using Thyme1.ViewModels;
+﻿@model Thyme1.Models.Plant;
 
-@model AddPlantViewModel;
 
-<h1>Edit Plant</h1>
 
-<form method="post" action="/plants/edit">
-    <input type="hidden" value="@ViewBag.Plant.Id" name="eventId" />
-    <div>
-    <label asp-for="PlantName"></label>
-    <input asp-for="PlantName" value="@ViewBag.Plant.Name" />
-    <span asp-validation-for="PlantName"></span>
+<style>
+    #cover {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    #cover-caption {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    form:before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.3);
+        z-index: -1;
+        border-radius: 20px;
+    }
+
+    .btn, .btn-lg {
+        background-color: #A4B494 !important;
+    }
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Edit Plant</h1>
+                    <h5>Add a Plant to your Collection!</h5>
+                    <div class="px-2">
+                        <form method="post" asp-controller="Plants" asp-action="Edit">
+                            <input type="hidden" name="plantId" />
+                            <div class="justify-content-center form-group">
+                                <input asp-for="PlantName" type="text" class="form-control">
+                                <span asp-validation-for="PlantName" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <input asp-for="PlantGenus" type="text" class="form-control" >
+                                <span asp-validation-for="PlantGenus" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <label>Date Last Watered:</label>
+                                <input asp-for="LastWatered" type="datetime-local" class="form-control">
+                            </div>
+
+                            <div class="justify-content-center form-group">
+                                <label>Date Last Fertilized:</label>
+                                <input asp-for="LastFertilized" type="datetime-local" class="form-control">
+                                <span asp-validation-for="LastFertilized" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <label>What Room is Your Plant in?</label>
+                                @Html.DropDownList("PlantRoomId", "[Select]")
+                                <span asp-validation-for="PlantRoomId" class="text-danger"></span>
+
+                            </div>
+                            <button type="submit" class="btn btn-lg">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
-    <div class="form-group">
-        <label asp-for="PlantGenus"></label>
-        <input asp-for="PlantGenus" />
-        <span asp-validation-for="PlantGenus"></span>
-    </div>
-    <br />
-    <div class="form-group">
-        <label asp-for="LastWatered">Contact Email</label>
-        <input asp-for="LastWatered" />
-        <span asp-validation-for="LastWatered"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="LastFertilized"></label>
-        <input asp-for="LastFertilized" />
-        <span asp-validation-for="LastFertilized"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="PlantRooms"></label>
-        <input asp-for="PlantRooms" />
-        <span asp-validation-for="PlantRooms"></span>
-    </div>
-    <input type="submit" value="Edit Plant" />
-</form>
+
+</section>
+
+
 

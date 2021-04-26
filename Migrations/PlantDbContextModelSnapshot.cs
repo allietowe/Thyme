@@ -276,9 +276,46 @@ namespace Thyme1.Migrations
                     b.Property<string>("PhotoName")
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int?>("PlantId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Taken")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ProgressPhotoID");
 
+                    b.HasIndex("PlantId");
+
                     b.ToTable("ProgressPhotos");
+                });
+
+            modelBuilder.Entity("Thyme1.Models.Reminder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlantId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlantId");
+
+                    b.ToTable("Reminders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -337,6 +374,22 @@ namespace Thyme1.Migrations
                     b.HasOne("Thyme1.Models.PlantRooms", "PlantRoom")
                         .WithMany("Plants")
                         .HasForeignKey("PlantRoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Thyme1.Models.ProgressPhotos", b =>
+                {
+                    b.HasOne("Thyme1.Models.Plant", "Plant")
+                        .WithMany()
+                        .HasForeignKey("PlantId");
+                });
+
+            modelBuilder.Entity("Thyme1.Models.Reminder", b =>
+                {
+                    b.HasOne("Thyme1.Models.Plant", "Plant")
+                        .WithMany()
+                        .HasForeignKey("PlantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

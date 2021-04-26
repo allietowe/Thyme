@@ -10,6 +10,7 @@ using Thyme1.ViewModels;
 using Thyme1.Data;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Plants.Controllers
 {
@@ -25,19 +26,24 @@ namespace Plants.Controllers
             context = dbContext;
             webHostEnvironment = hostEnvironment;
         }
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult Index()
         {
+
             List<Plant> plants = context.Plants
                 .Include(e => e.PlantRoom)
                 .ToList();
+
+            
             return View(plants);
         }
 
+        [Authorize]
         public IActionResult Add()
         {
             List<PlantRooms> rooms = context.PlantRooms.ToList();
             AddPlantViewModel addPlantViewModel = new AddPlantViewModel(rooms);
+            
             return View(addPlantViewModel);
         }
 
@@ -66,22 +72,6 @@ namespace Plants.Controllers
             return View(addPlantViewModel);
         }
 
-        private string UploadedFile(AddPlantViewModel model)
-        {
-            string uniqueFileName = null;
-
-            if (model.ProgressPhoto != null)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProgressPhoto.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.ProgressPhoto.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
 
         public IActionResult Delete()
         {
@@ -89,7 +79,6 @@ namespace Plants.Controllers
             return View();
         }
 
-        [HttpPost]
         public IActionResult Delete(int[] plantIds)
         {
             foreach (int plantId in plantIds)
@@ -108,9 +97,9 @@ namespace Plants.Controllers
         {
             Plant model = context.Plants.Find(plantId);
             ViewBag.Plant = model;
+            ViewBag.PlantRoomId = new SelectList(context.PlantRooms, "PlantRoomId", "PlantRoom", model.PlantRoomId);
 
-            ViewBag.Title = $"Edit Plant {model.PlantName} (id = {model.Id})";
-            return View();
+            return View(model);
         }
 
         [HttpPost]

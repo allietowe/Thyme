@@ -35,8 +35,8 @@ namespace Thyme1.Models
 
         public override bool Equals(object obj)
         {
-            return obj is Plant @event &&
-                   Id == @event.Id;
+            return obj is Plant @plant &&
+                   Id == @plant.Id;
         }
 
         public override int GetHashCode()

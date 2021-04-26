@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +39,17 @@ namespace Thyme1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add framework services.
+            services
+                .AddControllersWithViews()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                // Maintain property names during serialization. See:
+                // https://github.com/aspnet/Announcements/issues/194
+                .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            // Add Kendo UI services to the services container
+            services.AddKendo();
+
             services.AddDbContextPool<PlantDbContext>(options =>
                options.UseSqlServer(
                     Configuration.GetConnectionString("PlantDbContextConnection")));
@@ -58,13 +71,6 @@ namespace Thyme1
             services.AddRazorPages();
             services.AddHangfireServer();
             services.AddMvc();
-
-            // Add functionality to inject IOptions<T>
-            services.AddOptions();
-
-            // Add our Config object so it can be injected
-            services.Configure<Email>(Configuration.GetSection("EmailPassword"));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,10 +93,6 @@ namespace Thyme1
             app.UseRouting();
 
             app.UseHangfireDashboard();
-
-            RemindersController obj = new RemindersController(env);
-            
-            RecurringJob.AddOrUpdate(() => obj.SendEmail(), Cron.Minutely);
 
             app.UseAuthentication();
             app.UseAuthorization();

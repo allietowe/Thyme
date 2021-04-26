@@ -1,15 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-Thyme1-DF6945D9-C9C0-48F9-A58F-A38262BF9744</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="Views\Shared\image-from-rawpixel-id-2230166-png.png" />
   </ItemGroup>
-
   <ItemGroup>
+    <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.49" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.22" />
     <PackageReference Include="Hangfire.Core" Version="1.7.22" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.22" />
@@ -22,13 +21,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.12" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-	
   </ItemGroup>
-
   <ItemGroup>
     <None Include="wwwroot\images\Untitled-1thin.png" />
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Telerik.UI.for.AspNet.Core.Trial" Version="2021.1.330" />
+  </ItemGroup>
 </Project>

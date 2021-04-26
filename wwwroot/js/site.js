@@ -18,3 +18,9 @@ $(document).ready(function () {
         $('.animated-icon3').toggleClass('open');
     });
 });
+
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+                });
+           

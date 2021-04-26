@@ -11,184 +11,198 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet'>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <style>
-        nav {
-            overflow: auto;
-        }
+    nav {
+    overflow: auto;
+    }
 
-        .navbar-custom {
-            background-color: #FAF0E6;
-            opacity: .75;
-            position: relative;
-        }
+    .navbar-custom {
+    background-color: #A4B494;
+    opacity: .75;
+    position: relative;
+    }
 
-        .navbar-brand-custom {
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            display: block;
-        }
+    .navbar-brand-custom {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    }
 
-        .footer-custom {
-            background-color: #FAF0E6;
-            opacity: .5;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 2.5rem;
-        }
+    .footer-custom {
+    background-color: #BEC5AD;
+    opacity: .5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    }
 
-        .animated-icon1, .animated-icon2, .animated-icon3 {
-            width: 30px;
-            height: 20px;
-            position: relative;
-            margin: 0px;
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-            -webkit-transition: .5s ease-in-out;
-            -moz-transition: .5s ease-in-out;
-            -o-transition: .5s ease-in-out;
-            transition: .5s ease-in-out;
-            cursor: pointer;
-        }
+    .animated-icon1, .animated-icon2, .animated-icon3 {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    margin: 0px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    }
 
-            .animated-icon1 span, .animated-icon2 span, .animated-icon3 span {
-                display: block;
-                position: absolute;
-                height: 3px;
-                width: 100%;
-                border-radius: 9px;
-                opacity: 1;
-                left: 0;
-                -webkit-transform: rotate(0deg);
-                -moz-transform: rotate(0deg);
-                -o-transform: rotate(0deg);
-                transform: rotate(0deg);
-                -webkit-transition: .25s ease-in-out;
-                -moz-transition: .25s ease-in-out;
-                -o-transition: .25s ease-in-out;
-                transition: .25s ease-in-out;
-            }
+    .animated-icon1 span, .animated-icon2 span, .animated-icon3 span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+    }
 
-            .animated-icon1 span {
-                background: #ebc8b2;
-                float: right;
-            }
+    .animated-icon1 span {
+    background: #000F08;
+    float: right;
+    }
 
-            .animated-icon2 span {
-                background: #e3f2fd;
-            }
+    .animated-icon2 span {
+    background: #e3f2fd;
+    }
 
-            .animated-icon3 span {
-                background: #f3e5f5;
-            }
+    .animated-icon3 span {
+    background: #f3e5f5;
+    }
 
-            .animated-icon1 span:nth-child(1) {
-                top: 0px;
-            }
+    .animated-icon1 span:nth-child(1) {
+    top: 0px;
+    }
 
-            .animated-icon1 span:nth-child(2) {
-                top: 10px;
-            }
+    .animated-icon1 span:nth-child(2) {
+    top: 10px;
+    }
 
-            .animated-icon1 span:nth-child(3) {
-                top: 20px;
-            }
+    .animated-icon1 span:nth-child(3) {
+    top: 20px;
+    }
 
-            .animated-icon1.open span:nth-child(1) {
-                top: 11px;
-                -webkit-transform: rotate(135deg);
-                -moz-transform: rotate(135deg);
-                -o-transform: rotate(135deg);
-                transform: rotate(135deg);
-            }
+    .animated-icon1.open span:nth-child(1) {
+    top: 11px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    }
 
-            .animated-icon1.open span:nth-child(2) {
-                opacity: 0;
-                left: -60px;
-            }
+    .animated-icon1.open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+    }
 
-            .animated-icon1.open span:nth-child(3) {
-                top: 11px;
-                -webkit-transform: rotate(-135deg);
-                -moz-transform: rotate(-135deg);
-                -o-transform: rotate(-135deg);
-                transform: rotate(-135deg);
-            }
+    .animated-icon1.open span:nth-child(3) {
+    top: 11px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    }
 
-        body {
-            
-            min-height: 100%;
-            background-image: url("https://images.unsplash.com/photo-1587748225537-05b026214a80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80");
-            background-size: cover;
-        }
-
+    body {
+    min-height: 100%;
+    background-image: url("https://wallpaperaccess.com/full/1464300.jpg");
+    background-size: cover;
+    }
     </style>
+	<link href="https://kendo.cdn.telerik.com/2021.1.330/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://kendo.cdn.telerik.com/2021.1.330/js/jquery.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2021.1.330/js/jszip.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2021.1.330/js/kendo.all.min.js"></script>
+	<script src="https://kendo.cdn.telerik.com/2021.1.330/js/kendo.aspnetmvc.min.js"></script>
 </head>
-<body>
     <bg class="full_page">
-    <header>
-        <nav class="navbar navbar-custom border-bottom amber lighten-4 mb-4 center">
-            <a class="navbar-brand navbar-brand-custom" href="#" >
-                <img style="max-width:200px; margin-top: -7px;"
-                     src="/images/Untitled-1thin.png" />
-            </a>
-            <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
-                    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="animated-icon1 float-right"><span></span><span></span><span></span></div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent20">
-                <ul class="navbar-nav mr-auto float-right">
-                    <li class="nav-item active">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Plants" asp-action="Index">My Collection</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="PlantRoom" asp-action="Index">Plant Rooms</a>
-                    </li>
-                    @if (SignInManager.IsSignedIn(User)) {
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
-                        </form>
-                    </li>
-                                }
-                                else
-{
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                    </li>
+        <header>
+            <nav class="navbar navbar-custom border-bottom amber lighten-4 mb-4 center">
+                <a class="navbar-brand navbar-brand-custom" href="#">
+                    <img style="max-width:200px; margin-top: -7px;"
+                         src="/images/Untitled-1thin.png" />
+                </a>
+                <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+                        aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="animated-icon1 float-right"><span></span><span></span><span></span></div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+                    <ul class="navbar-nav mr-auto float-right">
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Plants" asp-action="Index">My Collection</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PlantRoom" asp-action="Index">Plant Rooms</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reminders" asp-action="Create">Add Watering Reminders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProgressPhoto" asp-action="Index">Progress Photos</a>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </li>
 
-                                }
-                </ul>
-            </div>
-            </div>
-        </nav>
-    </header>
-    <main class="pb-3">
-        @RenderBody()
-        
-    </main>
-        </bg>
+                        }
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <main class="pb-3">
+            @RenderBody()
+        </main>
+    </bg>
 
     <footer class="border-top footer footer-custom text-muted">
         <div class="container">
             &copy; 2021 - Thyme - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-</body>
 </html>

@@ -7,13 +7,62 @@
             text-align: center;
             font-family: 'Antic';
             font-weight: lighter;
+            color: white;
         }
         p {
             margin: 35px 275px 50px 275px;
         }
+    .carousel {
+        width: 640px;
+        height: 360px;
+    }
+
+    .carousel-inner {
+        width: 100%;
+        height: 100%
+    }
         </style>
 
 <div class="home-text">
     <h2>Take Some Thyme For Your Plants</h2>
     <p>Thyme is here to make sure you take the time to give your plants what they need! Keep track of all the plants in your collection and create custom reminders so that you never miss a watering! Make sure they're well fed too with custom fertilizing reminders. You'll also never forget the last time you watered or fertilized when you log your plant chores each time you do them!</p>
+</div>
+
+<div id="demo" class="carousel slide carousel-fade carousel-dark" data-ride="carousel"
+     style="max-width: 900px; margin: 0 auto">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-bs-target="#carouselExampleDark" data-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselExampleDark" data-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleDark" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="d-flex justify-content-center w-100 h-100">
+                <img @*class="center-block"*@ src="https://cdn.shopify.com/s/files/1/0059/8835/2052/products/Monstera_delisiosa_4_FGT_450x.jpg?v=1612444295" alt="Los Angeles">
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex justify-content-center w-100 h-100">
+                <img @*class="img-fluid"*@ src="https://images.squarespace-cdn.com/content/v1/5609487be4b035506396fb9c/1596460327915-QBCRZCZEK400VK8C6IWM/ke17ZwdGBToddI8pDm48kKVr1gWRtRuDvfnPPMh-VDpZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI8FNs0v8qdtDzqXerqGSo3mUnqdoMzGpoE7ko1tkllA4KMshLAGzx4R3EDFOm1kBS/s181787783377916527_p132_i3_w765.jpeg?format=1000w" alt="Chicago">
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex justify-content-center w-100 h-100">
+                <img @*class="img-fluid"*@ src="https://www.bostonmagazine.com/wp-content/uploads/sites/2/2019/11/house-plants-feature.jpg" alt="New York">
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
 </div>

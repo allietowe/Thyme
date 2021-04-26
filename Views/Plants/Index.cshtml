@@ -1,62 +1,76 @@
 ﻿@model List<Thyme1.Models.Plant>
 
+@using Thyme1.Controllers
 
-<h1>Plants</h1>
+<style>
+    table tr td, table tr th {
+        background-color: rgba(0, 15, 8, 0.3) !important;
+        color: white;
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+        justify-content: space-around;
+    }
 
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    .table {
+        margin: auto;
+        width: 50% !important;
+    }
+    .text-my-own-color {
+        color: white !important;
+    }
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
 
 @if (Model.Count == 0)
 {
-    <p>No Plants Here!</p>
+    <p class="header">No Plants Here!</p>
 }
 else
 {
-    <table class="table">
+ 
+            <div id="box" class="row justify-content-center">
+                <div class="col-auto">
+                    <h1>My Collection</h1>
+                    <table class="table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Genus</th>
+                                <th>Date Last Watered</th>
+                                <th>Date Last Fertilized</th>
+                                <th>Room</th>
+                                <th>Edit</th>
 
-        <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Plant Genus
-            </th>
-            <th>
-                Last Watered
-            </th>
-            <th>
-                Last Fertilized
-            </th>
-            <th>
-                Room
-            </th>
-            <th>
-                Edit Plant
-            </th>
-        </tr>
-        @foreach (var plant in Model)
-        {
-    <tr>
-        <td>@plant.Id</td>
-        <td><a asp-controller="Plants" asp-action="Detail" asp-route-id="@plant.Id">@plant.PlantName</a></td>
-        <td>@plant.PlantGenus</td>
-        <td>@plant.LastWatered</td>
-        <td>@plant.LastFertilized</td>
-        <td>@plant.PlantRoom.Name</td>
-        <td><a asp-controller="Plants" asp-action="Edit" asp-route-id="@plant.Id">Edit Plant</a></td>
-    </tr>
-        }
-    </table>
-}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var plant in Model)
+                            {
+                                <tr>
+                                    <td style="width:10%"><a class="text-my-own-color" asp-controller="Plants" asp-action="Detail" asp-route-id="@plant.Id">@plant.PlantName</a></td>
+                                    <td>@plant.PlantGenus</td>
+                                    <td>@plant.LastWatered</td>
+                                    <td>@plant.LastFertilized</td>
+                                    <td>@plant.PlantRoom.Name</td>
+                                    <td><a class="text-my-own-color" asp-controller="Plants" asp-action="Edit" asp-route-id="@plant.Id">Edit Plant</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+            </div>
+            }
 
 
-<p>
-    <a asp-controller="Plants" asp-action="Add">Add Plant</a>
-</p>
-<p>
-    <a asp-controller="Plants" asp-action="Delete">Delete Plant</a>
-</p>
-
-
-@*<partial name="/Views/Shared/_LinkListPartial.cshtml" />*@
+            <p>
+                <a class="text-my-own-color" asp-controller="Plants" asp-action="Add">Add Plant</a>
+            </p>
+            <p>
+                <a class="text-my-own-color" asp-controller="Plants" asp-action="Delete">Delete Plant</a>
+            </p>

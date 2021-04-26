@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Thyme1.Data;
 using Thyme1.Models;
+using Thyme1.ViewModels;
 
 namespace Thyme1.Controllers
 {
@@ -24,6 +26,7 @@ namespace Thyme1.Controllers
         }
 
         // GET: Image
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await context.ProgressPhotos.ToListAsync());
@@ -50,16 +53,19 @@ namespace Thyme1.Controllers
         // GET: Image/Create
         public IActionResult Create()
         {
-            return View();
+            List<Plant> plants = context.Plants.ToList();
+            AddProgressPhotoViewModel addProgressPhotoViewModel = new AddProgressPhotoViewModel(plants);
+            return View(addProgressPhotoViewModel);
         }
 
         // POST: Image/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ImageID,title,ImageFile")] ProgressPhotos imageModel)
+        public async Task<IActionResult> Create([Bind("ImageID,Name,ImageFile")] ProgressPhotos imageModel, AddProgressPhotoViewModel addProgressPhotoViewModel)
         {
             if (ModelState.IsValid)
             {
+
                 //save image to wwwroot folder
                 string wwwrootPath = hostEnvironment.WebRootPath;
                 string FileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
@@ -71,10 +77,19 @@ namespace Thyme1.Controllers
                     await imageModel.ImageFile.CopyToAsync(fileStream);
                 }
 
+                Plant thePlant = context.Plants.Find(addProgressPhotoViewModel.PlantId);
+                ProgressPhotos newProgressPhoto = new ProgressPhotos
+                {
+                    Name = addProgressPhotoViewModel.Name,
+                    Plant = thePlant,
+                    PhotoName = addProgressPhotoViewModel.PhotoName
+                    
+                };
 
 
                 //insert record
                 context.Add(imageModel);
+                context.ProgressPhotos.Add(newProgressPhoto);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -1,24 +1,58 @@
 ﻿@model Thyme1.ViewModels.PlantDetailViewModel
 
-<h1>@Model.PlantName</h1>
 
-<table class="table">
-    <tr>
-        <th>Plant Genus</th>
-        <td>@Model.PlantGenus</td>
-    </tr>
-    <tr>
-        <th>Last Watered</th>
-        <td>@Model.LastWatered</td>
-    </tr>
-    <tr>
-        <th>Last Fertilized</th>
-        <td>@Model.LastFertilized</td>
-    </tr>
-    <tr>
-        <th>Plant Room</th>
-        <td>@Model.PlantRoomName</td>
-    </tr>
+<style>
+    table tr td, table tr th {
+        background-color: rgba(0, 15, 8, 0.3) !important;
+        color: white;
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+        justify-content: space-around;
+    }
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    .table {
+        margin: auto;
+        width: 50% !important;
+    }
+
+    .text-my-own-color {
+        color: white !important;
+    }
+</style>
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+    <div id="box" class="row justify-content-center">
+        <div class="col-auto">
+            <h1>@Model.PlantName</h1>
+            <table class="table-responsive">
+                <thead>
+                    <tr>
+                        <th>Plant Genus</th>
+                        <td>@Model.PlantGenus</td>
+                    </tr>
+                    <tr>
+                        <th>Last Watered</th>
+                        <td>@Model.LastWatered</td>
+                    </tr>
+                    <tr>
+                        <th>Last Fertilized</th>
+                        <td>@Model.LastFertilized</td>
+                    </tr>
+                    <tr>
+                        <th>Plant Room</th>
+                        <td>@Model.PlantRoomName</td>
+                    </tr>
 </table>
+        </div>
+    </div>
+}
 
-<a asp-controller="Tag" asp-action="Add Event" asp-route-id="@Model.PlantId"></a>
+
+
+
+

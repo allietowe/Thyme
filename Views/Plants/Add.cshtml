@@ -2,35 +2,84 @@
 
 @model AddPlantViewModel;
 
-<h1>Add Event</h1>
 
-<form method="post">
-    <div asp-controller="Plants" asp-action="Add" class="form-group">
-        <label asp-for="PlantName">Name</label>
-        <input asp-for="PlantName" />
-        <span asp-validation-for="PlantName"></span>
+<style>
+    #cover {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    #cover-caption {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    form:before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.3);
+        z-index: -1;
+        border-radius: 20px;
+    }
+
+    .btn, .btn-lg {
+        background-color: #A4B494 !important;
+    }
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Add A Plant</h1>
+                    <h5>Add a Plant to your Collection!</h5>
+                    <div class="px-2">
+                        <form method="post" asp-controller="Plants" asp-action="Add">
+                            <div class="justify-content-center form-group">
+                                <input asp-for="PlantName" type="text" class="form-control" placeholder="Name of Plant">
+                                <span asp-validation-for="PlantName" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <input asp-for="PlantGenus" type="text" class="form-control" placeholder="Plant Genus(if known)">
+                                <span asp-validation-for="PlantGenus" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <label>Date Last Watered:</label>
+                                <input asp-for="LastWatered" type="datetime-local" class="form-control" placeholder="Date Last Watered">
+                            </div>
+
+                            <div class="justify-content-center form-group">
+                                <label>Date Last Fertilized:</label>
+                                <input asp-for="LastFertilized" type="datetime-local" class="form-control" placeholder="Date Last Fertilized">
+                                <span asp-validation-for="LastFertilized" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <label>What Room is Your Plant in?</label>
+                                <select asp-for="PlantRoomId" asp-items="Model.PlantRooms" class="form-control" placeholder="What Room Is Your Plant In?"></select>
+                                <span asp-validation-for="PlantRoomId" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-lg">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br />
-    <div class="form-group">
-        <label asp-for="PlantGenus">Genus</label>
-        <input asp-for="PlantGenus" />
-        <span asp-validation-for="PlantGenus"></span>
-    </div>
-    <br />
-    <div class="form-group">
-        <label asp-for="LastWatered">Last Watered</label>
-        <input asp-for="LastWatered" />
-        <span asp-validation-for="LastWatered"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="LastFertilized">Last Fertilized</label>
-        <input asp-for="LastFertilized" />
-        <span asp-validation-for="LastFertilized"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="PlantRoomId">Plant Room</label>
-        <select asp-for="PlantRoomId" asp-items="Model.PlantRooms"></select>
-    </div>
-        <input type="submit" value="Add Plant" />
-</form>
+
+</section>
+
+
 

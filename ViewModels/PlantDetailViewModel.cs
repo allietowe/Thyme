@@ -28,5 +28,7 @@ namespace Thyme1.ViewModels
             PlantRoomName = thePlant.PlantRoom.Name;
 
         }
+
+        public PlantDetailViewModel() { } 
     }
 }

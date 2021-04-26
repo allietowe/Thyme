@@ -1,37 +1,70 @@
-﻿@model Thyme1.Models.ProgressPhotos
+﻿@model Thyme1.ViewModels.AddProgressPhotoViewModel;
 
-@{
-    ViewData["Title"] = "Create";
-}
+<style>
+    #cover {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
 
-<h1>Create</h1>
+    #cover-caption {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
 
-<h4>ImageModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    form:before {
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.3);
+        z-index: -1;
+        border-radius: 20px;
+    }
+    .btn, .btn-lg {
+        background-color: #A4B494 !important;
+    }
+</style>
+
+<a href='javascript:history.go(-1)'>Return to previous page</a>
+
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h1 class="display-4 py-2 text-truncate">Progress Photos</h1>
+                    <h5>Track your plant's growth by adding a progress photo!</h5>
+                    <div class="px-2">
+                        <form method="post" enctype="multipart/form-data" asp-controller="ProgressPhoto" asp-action="Create">
+                            <div class="justify-content-center form-group">
+                                <label>When Was This Photo Taken?</label>
+                                <input asp-for="Taken" type="datetime-local" class="form-control" placeholder="Date Last Watered">
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <label>Which Plant is This Photo of?</label>
+                                <select asp-for="PlantId" asp-items="Model.Plant" class="form-control" placeholder="What Room Is Your Plant In?"></select>
+                                <span asp-validation-for="PlantId" class="text-danger"></span>
+                            </div>
+                            <div class="justify-content-center form-group">
+                                <input asp-for="ImageFile" type="file" accept="image/*" class="form-control">
+                                <span asp-validation-for="PhotoName" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-lg">Add</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" accept="image/*" />
-                <span asp-validation-for="PhotoName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

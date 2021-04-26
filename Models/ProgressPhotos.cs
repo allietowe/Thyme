@@ -13,8 +13,10 @@ namespace Thyme1.Models
     {
         [Key]
         public int ProgressPhotoID { get; set; }
+        public DateTime Taken { get; set; }
 
         public string Name { get; set; }
+        public Plant Plant { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
         [DisplayName("Image Name")]

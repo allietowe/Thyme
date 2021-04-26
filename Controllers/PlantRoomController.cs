@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Thyme1.Models;
 using Thyme1.ViewModels;
 using Thyme1.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Thyme1.Controllers
 {
@@ -19,6 +20,7 @@ namespace Thyme1.Controllers
         }
 
         // GET: /<controller>/
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -34,7 +36,7 @@ namespace Thyme1.Controllers
         }
 
         [HttpPost]
-        public IActionResult ProcessCreatePlantRoomForm(AddPlantRoomViewModel addPlantRoomViewModel)
+        public IActionResult Create(AddPlantRoomViewModel addPlantRoomViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +51,7 @@ namespace Thyme1.Controllers
                 return Redirect("/PlantRoom");
             }
 
-            return View("Create", addPlantRoomViewModel);
+            return View(addPlantRoomViewModel);
         }
     }
 }
